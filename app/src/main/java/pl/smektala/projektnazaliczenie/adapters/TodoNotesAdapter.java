@@ -1,4 +1,4 @@
-package pl.smektala.projekt.adapters;
+package pl.smektala.projektnazaliczenie.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +7,9 @@ import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 
-import pl.smektala.projekt.R;
-import pl.smektala.projekt.models.TodoNoteModel;
+import pl.smektala.projektnazaliczenie.R;
+import pl.smektala.projektnazaliczenie.models.TodoNoteModel;
+
 
 public class TodoNotesAdapter extends BaseAdapter {
 

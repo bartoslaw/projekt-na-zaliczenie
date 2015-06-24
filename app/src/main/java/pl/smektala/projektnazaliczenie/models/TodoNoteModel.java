@@ -1,4 +1,4 @@
-package pl.smektala.projekt.models;
+package pl.smektala.projektnazaliczenie.models;
 
 import java.util.Date;
 
@@ -32,5 +32,21 @@ public class TodoNoteModel extends RealmObject {
 
     public int getPriority() {
         return priority;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setNotificationDate(Date notificationDate) {
+        this.notificationDate = notificationDate;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

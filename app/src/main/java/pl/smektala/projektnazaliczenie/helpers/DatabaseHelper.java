@@ -1,4 +1,4 @@
-package pl.smektala.projekt.helpers;
+package pl.smektala.projektnazaliczenie.helpers;
 
 import android.content.Context;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
-import pl.smektala.projekt.models.TodoNoteModel;
+import pl.smektala.projektnazaliczenie.models.TodoNoteModel;
 
 public class DatabaseHelper {
 
@@ -25,9 +25,7 @@ public class DatabaseHelper {
     }
 
     public ArrayList<TodoNoteModel> getList() {
-        RealmQuery<TodoNoteModel> query = realmInstance.where(TodoNoteModel.class);
-
-        return new ArrayList<>(query.findAll());
+        return new ArrayList<>(realmInstance.allObjectsSorted(TodoNoteModel.class, "priority", true));
     }
 
     public boolean addItem(TodoNoteModel note) {
@@ -36,6 +34,22 @@ public class DatabaseHelper {
 
         realmInstance.beginTransaction();
         realmInstance.copyToRealm(note);
+        realmInstance.commitTransaction();
+
+        return true;
+    }
+
+    public boolean deleteItem(TodoNoteModel note) {
+        RealmQuery<TodoNoteModel> query = realmInstance.where(TodoNoteModel.class);
+        query.equalTo("title", note.getTitle());
+
+        TodoNoteModel found = query.findFirst();
+
+        if(found == null)
+            return false;
+
+        realmInstance.beginTransaction();
+        found.removeFromRealm();
         realmInstance.commitTransaction();
 
         return true;
