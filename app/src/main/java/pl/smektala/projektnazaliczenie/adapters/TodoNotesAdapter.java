@@ -1,8 +1,10 @@
 package pl.smektala.projektnazaliczenie.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import pl.smektala.projektnazaliczenie.R;
+import pl.smektala.projektnazaliczenie.activities.NoteDetailsActivity;
 import pl.smektala.projektnazaliczenie.helpers.DatabaseHelper;
 import pl.smektala.projektnazaliczenie.models.TodoNoteModel;
 
@@ -64,6 +67,15 @@ public class TodoNotesAdapter extends BaseAdapter {
                 items.remove(position);
                 items.trimToSize();
                 notifyDataSetChanged();
+            }
+        });
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), NoteDetailsActivity.class);
+                i.putExtra("title", item.getTitle());
+                v.getContext().startActivity(i);
             }
         });
 

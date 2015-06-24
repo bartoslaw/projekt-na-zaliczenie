@@ -27,6 +27,14 @@ public class DatabaseHelper {
         return new ArrayList<>(realmInstance.allObjectsSorted(TodoNoteModel.class, "priority", false));
     }
 
+    public TodoNoteModel getItem(String title) {
+        RealmQuery<TodoNoteModel> query = realmInstance.where(TodoNoteModel.class);
+
+        query.equalTo("title", title);
+
+        return query.findFirst();
+    }
+
     public boolean addItem(TodoNoteModel note) {
         if (note == null) return false;
 

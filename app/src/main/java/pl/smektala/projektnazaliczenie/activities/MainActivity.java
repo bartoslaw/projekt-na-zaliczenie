@@ -45,13 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(new Intent(v.getContext(), AddNoteActivity.class), REQUEST_CODE);
             }
         });
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //todo
-            }
-        });
     }
 
     private void initList() {
