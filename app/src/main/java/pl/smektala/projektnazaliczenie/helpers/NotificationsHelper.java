@@ -5,7 +5,6 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.SystemClock;
 
 import java.util.Date;
 import java.util.Random;
@@ -26,8 +25,7 @@ public class NotificationsHelper {
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, builder.build());
         PendingIntent pendingIntent = PendingIntent.getBroadcast(cntx, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        long futureInMillis = SystemClock.elapsedRealtime() + time.getTime();
         AlarmManager alarmManager = (AlarmManager) cntx.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, time.getTime(), pendingIntent);
     }
 }

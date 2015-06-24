@@ -18,19 +18,17 @@ public class DatabaseHelper {
     }
 
     public static synchronized DatabaseHelper getInstance(Context cntx) {
-        if(instance == null || realmInstance == null)
-            instance = new DatabaseHelper(cntx);
+        if (instance == null || realmInstance == null) instance = new DatabaseHelper(cntx);
 
         return instance;
     }
 
     public ArrayList<TodoNoteModel> getList() {
-        return new ArrayList<>(realmInstance.allObjectsSorted(TodoNoteModel.class, "priority", true));
+        return new ArrayList<>(realmInstance.allObjectsSorted(TodoNoteModel.class, "priority", false));
     }
 
     public boolean addItem(TodoNoteModel note) {
-        if(note == null)
-            return false;
+        if (note == null) return false;
 
         realmInstance.beginTransaction();
         realmInstance.copyToRealm(note);
@@ -45,8 +43,7 @@ public class DatabaseHelper {
 
         TodoNoteModel found = query.findFirst();
 
-        if(found == null)
-            return false;
+        if (found == null) return false;
 
         realmInstance.beginTransaction();
         found.removeFromRealm();
