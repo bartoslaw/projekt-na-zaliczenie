@@ -1,40 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-
-    <EditText
-        android:id="@+id/name_edit_text"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="nazwa"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-    <EditText
-        android:id="@+id/description_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="opis"/>
 
-    <RatingBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"/>
+        <EditText
+            android:id="@+id/name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="nazwa"
+            />
 
-    <Spinner
-        android:id="@+id/notification_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/description_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="opis"/>
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/notification_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
 
     <Button
+        android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="66dp"
-        android:text="Stwórz"
-        android:id="@+id/button2"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_alignParentBottom="true"
         android:background="#ffffff"
-        android:layout_gravity="center_horizontal|bottom" />
+        android:text="Stwórz"/>
 
-
-</LinearLayout>
+</RelativeLayout>
